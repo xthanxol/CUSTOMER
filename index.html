@@ -66,7 +66,7 @@ main.wrap{padding:50px 28px 70px}
 <main class="wrap"><section><div class="marker"><span class="idx">01</span><span class="line"></span><span class="label">In the kitchen</span></div><h2>Preparing</h2><div class="list" id="lp"></div></section>
 <section><div class="marker"><span class="idx">02</span><span class="line"></span><span class="label">Forwarded to rider</span></div><h2>Ready for rider</h2><div class="list" id="lr"></div></section></main>
 <script>
-const DB="",KEY="foodline_orders",$=s=>document.querySelector(s),peso=n=>"₱"+n.toLocaleString();
+const DB="https://foodline-4576d-default-rtdb.asia-southeast1.firebasedatabase.app/",KEY="foodline_orders",$=s=>document.querySelector(s),peso=n=>"₱"+n.toLocaleString();
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 let cache=[];const load=async()=>{if(DB){try{const r=await(await fetch(DB+"/orders.json")).json();cache=r?Object.values(r):[]}catch(_){}return cache}try{return JSON.parse(localStorage.getItem(KEY)||"[]")}catch(_){return[]}};
 function card(o){const t=new Date(o.at).toLocaleTimeString([],{hour:"numeric",minute:"2-digit"});
