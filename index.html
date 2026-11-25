@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FOODLINE Kitchen – Seller orders</title>
+<title>FOODLINE – Order food online</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -38,55 +38,132 @@ section h2{font-size:2.1rem;text-transform:uppercase;margin-bottom:20px}
 .marker .label{font:500 .75rem Oswald,sans-serif;color:var(--gray);text-transform:uppercase;letter-spacing:2.5px}
 .row{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px dashed #ffffff29}
 
-.live{font-size:.85rem;color:var(--soft)}.live:before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:#3ddc97;margin-right:8px}
-.hero{padding-bottom:90px}
-.strip{position:relative;z-index:4;margin-top:-50px}
-.strip .wrap{background:var(--charcoal-2);display:grid;grid-template-columns:repeat(3,1fr);box-shadow:0 22px 44px #0007;padding:0}
-.stat{padding:28px 22px;text-align:center;border-right:1px solid #ffffff14}.stat:last-child{border:0}
-.stat strong{display:block;font:600 2.4rem Oswald,sans-serif;color:var(--amber)}
-.stat span{font-size:.82rem;color:#a7aeb4;text-transform:uppercase;letter-spacing:.6px}
-main.wrap{padding:50px 28px 70px}
-.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;align-items:start}
-.o{background:var(--charcoal-2);border:1px solid #ffffff1f;border-left:6px solid var(--amber);padding:18px}.o.READY{border-left-color:var(--yellow)}
-.top{display:flex;justify-content:space-between;align-items:baseline}.top h4{font-size:1.3rem;text-transform:uppercase}.top span{color:var(--gray);font-size:.8rem}
-.who{margin:6px 0 12px}.who b{display:block}.who span{color:var(--soft)}
-.sum{display:flex;justify-content:space-between;padding:12px 0;font:600 1.15rem Oswald,sans-serif}.sum span:last-child{color:var(--amber)}
-.seg{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--steel)}
-.seg button{padding:11px;font:600 .9rem Oswald,sans-serif;letter-spacing:.5px;background:var(--steel);color:var(--soft)}
-.seg button:not(.on):hover{background:var(--steel-light)}
-.seg .on.pr{background:var(--amber);color:var(--charcoal)}.seg .on.rd{background:var(--yellow);color:var(--charcoal)}
-.none{border:1px dashed var(--steel-light);padding:22px;color:var(--gray);grid-column:1/-1}
-@media(max-width:700px){.strip .wrap{grid-template-columns:1fr}.stat{border-right:0;border-bottom:1px solid #ffffff14}}
+.btn,.cartbtn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 26px;font:600 .95rem Oswald,sans-serif;background:var(--amber);color:var(--charcoal);clip-path:polygon(0 0,100% 0,100% 70%,92% 100%,0 100%);transition:transform .18s,background .18s}
+.btn:hover:not(:disabled),.cartbtn:hover{background:var(--white);transform:translateY(-2px)}
+.btn:disabled{background:var(--steel-light);color:var(--gray);cursor:not-allowed}
+.btn.alt{background:var(--steel);color:var(--yellow)}.btn.alt:hover:not(:disabled){background:var(--steel-light);transform:none}
+.cartbtn{padding:10px 22px}.cartbtn b{background:var(--charcoal);color:var(--yellow);min-width:24px;padding:0 6px;text-align:center;font-size:.8rem}
+.main-nav{display:flex;gap:30px;margin-left:auto}
+.main-nav a{font:500 .92rem Oswald,sans-serif;color:var(--amber);position:relative;padding:6px 0}
+.main-nav a:after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--amber);transition:width .2s}
+.main-nav a:hover:after{width:100%}
+.meta{display:flex;gap:40px;flex-wrap:wrap;border-top:1px solid #ffffff29;padding-top:22px;margin-top:40px}
+.meta strong{display:block;font:600 1.6rem Oswald,sans-serif;color:var(--amber)}
+.meta span{font-size:.82rem;color:#a7aeb4;text-transform:uppercase;letter-spacing:.5px}
+.shop-layout{display:grid;grid-template-columns:1fr 330px;gap:32px;align-items:start;padding-top:20px;padding-bottom:70px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
+.p{background:var(--charcoal-2);border:1px solid #ffffff1f;padding:18px 12px 14px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;transition:border-color .2s,background .2s}
+.p:hover{background:var(--steel)}.p.on{border-color:var(--amber);box-shadow:inset 0 -4px 0 var(--amber)}
+.e{font-size:44px;line-height:1.2}
+.p b{font:500 .95rem Oswald,sans-serif;text-transform:uppercase;letter-spacing:.4px}
+.p span{color:var(--soft);font-size:.9rem}
+.st{margin-top:10px;display:flex;align-items:center;background:var(--steel)}
+.st button{width:36px;height:34px;font-size:1.2rem;color:var(--yellow);background:var(--steel-light)}.st button:hover{background:var(--amber);color:var(--charcoal)}
+.st i{min-width:36px;font:600 1rem Oswald,sans-serif;text-align:center}
+aside{position:sticky;top:90px;background:var(--charcoal-2);border:1px solid #ffffff1f;border-top:4px solid var(--amber)}
+aside h3{padding:14px 18px;font-size:1.3rem;text-transform:uppercase;background:var(--steel)}
+#live{padding:6px 18px;min-height:90px;max-height:46vh;overflow:auto}
+.empty{color:var(--gray);padding:14px 0}
+.tot{display:flex;justify-content:space-between;padding:14px 18px;border-top:1px solid #ffffff29;font:600 1.2rem Oswald,sans-serif}.tot span:last-child{color:var(--amber)}
+.acts{display:flex;gap:10px;padding:0 18px 18px}.acts .btn{flex:1;padding:12px 16px}.acts .alt{flex:0 0 auto}
+#drawer{position:fixed;inset:0 0 0 auto;width:min(430px,100%);background:var(--charcoal);border-left:4px solid var(--amber);z-index:700;transform:translateX(100%);transition:transform .25s;display:flex;flex-direction:column;box-shadow:-8px 0 30px #0008}
+#drawer.open{transform:none}
+#drawer header{position:static;display:flex;justify-content:space-between;align-items:center;padding:18px 20px;background:var(--steel);box-shadow:none}
+#drawer header h3{font-size:1.4rem;text-transform:uppercase}
+.x{color:var(--yellow);font-size:1.8rem;padding:0 6px}
+#orders,#mine{flex:1;overflow:auto;padding:18px;display:grid;gap:14px;align-content:start}
+.oc{background:var(--charcoal-2);border:1px solid #ffffff1f;border-left:5px solid var(--amber);padding:16px}
+.oc h4{font-size:1.15rem;text-transform:uppercase;margin-bottom:6px}.oc .acts{padding:14px 0 0}
+#shade{position:fixed;inset:0;background:#000a;z-index:600;display:none}#shade.on{display:block}
+dialog{border:0;padding:0;width:min(420px,92vw);margin:auto;background:var(--charcoal-2);color:var(--yellow);border-top:4px solid var(--amber)}dialog::backdrop{background:#000b}
+dialog h3{padding:16px 20px;font-size:1.5rem;text-transform:uppercase;background:var(--steel)}
+dialog form{padding:20px;display:grid;gap:14px}
+label{display:grid;gap:5px;font:500 .9rem Oswald,sans-serif;letter-spacing:.4px}
+input{padding:11px;background:var(--charcoal);border:1px solid var(--steel-light);color:var(--yellow);font:1rem Inter,sans-serif}input:focus{border-color:var(--amber)}
+#sum{color:var(--soft)}
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,90px);background:var(--steel);color:var(--yellow);padding:13px 22px;border-left:5px solid var(--amber);transition:transform .25s;z-index:800}#toast.on{transform:translate(-50%,0)}
+@media(max-width:980px){.main-nav{display:none}#openMine{margin-left:auto}.shop-layout{grid-template-columns:1fr;padding-bottom:310px}aside{position:fixed;top:auto;bottom:0;left:0;right:0;z-index:400}#live{max-height:20vh}}
+
+[hidden]{display:none!important}
+.tabs{display:flex;gap:4px}.tabs button{padding:8px 16px;font:600 1rem Oswald,sans-serif;text-transform:uppercase;color:var(--soft);background:var(--charcoal)}.tabs button.on{background:var(--amber);color:var(--charcoal)}
+.cartbtn.alt2{background:var(--steel);color:var(--yellow)}.cartbtn.alt2 b{background:var(--amber);color:var(--charcoal)}
+select{padding:11px;background:var(--charcoal);border:1px solid var(--steel-light);color:var(--yellow);font:1rem Inter,sans-serif}select:focus{border-color:var(--amber)}
+.oc h4{display:flex;align-items:center;gap:10px}.bd{margin-left:auto;font-size:.8rem;padding:2px 10px;background:var(--amber);color:var(--charcoal)}
+.oc.READY{border-left-color:var(--yellow)}.oc.READY .bd{background:var(--yellow)}
+.oc.DELIVERED{border-left-color:#22c55e}.oc.DELIVERED .bd{background:#22c55e}.oc .x{padding:0 4px;font-size:1.5rem}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:10px}.steps span{background:var(--steel);color:var(--gray);text-align:center;font:500 .75rem Oswald,sans-serif;padding:5px;text-transform:uppercase}.steps span.on{background:var(--amber);color:var(--charcoal)}
+.sm{color:var(--gray);font-size:.85rem;padding-top:6px}
 </style>
 </head>
 <body>
-<header><div class="wrap"><div class="logo">FOOD<span>LINE</span><small>Kitchen</small></div><div class="live">Listening for orders</div></div></header>
-<div class="hero"><div class="wrap"><div class="tag">Seller dashboard</div><h1>Incoming <em>orders</em></h1><p class="lead">New customer orders appear here automatically. Mark each one READY when it is packed and waiting for the rider.</p></div></div>
-<div class="strip"><div class="wrap"><div class="stat"><strong id="n0">0</strong><span>Total orders</span></div><div class="stat"><strong id="n1">0</strong><span>Preparing</span></div><div class="stat"><strong id="n2">0</strong><span>Ready for rider</span></div></div></div>
-<main class="wrap"><section><div class="marker"><span class="idx">01</span><span class="line"></span><span class="label">In the kitchen</span></div><h2>Preparing</h2><div class="list" id="lp"></div></section>
-<section><div class="marker"><span class="idx">02</span><span class="line"></span><span class="label">Forwarded to rider</span></div><h2>Ready for rider</h2><div class="list" id="lr"></div></section></main>
+<header id="hd"><div class="wrap"><a class="logo" href="#top">FOOD<span>LINE</span></a><nav class="main-nav" id="nav"></nav><button class="cartbtn alt2" id="openMine">My orders <b id="mc">0</b></button><button class="cartbtn" id="openCart" aria-label="Open cart">Cart <b id="cc">0</b></button></div></header>
+<div class="hero" id="top"><div class="wrap"><div class="tag">Groceries and meals</div><h1>Order fresh. Eat <em>fast.</em></h1><p class="lead">Pick from fresh produce, hot meals, pantry staples and cold drinks. Build your order, add it to your cart and check out in a few taps.</p><a class="btn" href="#c0">Start ordering</a>
+<div class="meta"><div><strong>4</strong><span>Categories</span></div><div><strong>32</strong><span>Items</span></div><div><strong>Live</strong><span>Order summary</span></div></div></div></div>
+
+<main class="wrap shop-layout">
+<div id="shop"></div>
+<aside aria-live="polite"><h3>Your current order</h3><div id="live"></div>
+<div class="tot"><span>Total</span><span id="tt">₱0</span></div>
+<div class="acts"><button class="btn alt" id="clr">Clear</button><button class="btn" id="add" disabled>Add to Cart</button></div></aside>
+</main>
+
+<div id="shade"></div>
+<div id="drawer" role="dialog" aria-label="Cart"><header><div class="tabs"><button data-t="0" class="on">Cart</button><button data-t="1">My orders</button></div><button class="x" id="closeCart" aria-label="Close cart">×</button></header><div id="orders"></div><div id="mine" hidden></div></div>
+
+<dialog id="co"><h3>Checkout</h3><form id="f" method="dialog">
+<div id="sum" style="font-weight:600"></div>
+<label>Name<input id="nm" required autocomplete="name"></label>
+<label>Location<select id="lc" required></select></label>
+<div class="acts" style="padding:0"><button type="button" class="btn alt" id="cx">Cancel</button><button class="btn">Place order</button></div></form></dialog>
+<div id="toast" role="status"></div>
+
 <script>
+const CATS=[
+["Fresh Section",[["Fresh fruits","🍎",120],["Vegetables","🥬",80],["Beef","🥩",420],["Pork","🥓",340],["Chicken","🍗",260],["Shrimp","🦐",380],["Fish","🐟",230],["Egg","🥚",12],["Milk","🥛",95],["Cheese","🧀",150],["Butter","🧈",110]]],
+["Fast Foods",[["Pizza","🍕",350],["Fries","🍟",85],["Burger","🍔",140],["Ramen","🍜",190],["Shawarma","🌯",130],["Tacos","🌮",120],["Fried rice","🍚",110]]],
+["Pantry and Center Section",[["Bread","🍞",65],["Pasta","🍝",90],["Cereal","🥣",180],["Ketchup","🍅",55],["Mayonnaise","🫙",75],["Sauces","🥫",60]]],
+["Drinks and Frozen Dessert",[["Ice cream","🍨",95],["Sundae","🍧",70],["Iced tea","🧊",50],["Lemon tea","🍋",55],["Milk tea","🧋",85],["Water","💧",25],["Coffee","☕",75],["Energy drink","⚡",60]]]];
 const DB="https://foodline-4576d-default-rtdb.asia-southeast1.firebasedatabase.app/",KEY="foodline_orders",$=s=>document.querySelector(s),peso=n=>"₱"+n.toLocaleString();
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-let cache=[];const load=async()=>{if(DB){try{const r=await(await fetch(DB+"/orders.json")).json();cache=r?Object.values(r):[]}catch(_){}return cache}try{return JSON.parse(localStorage.getItem(KEY)||"[]")}catch(_){return[]}};
-function card(o){const t=new Date(o.at).toLocaleTimeString([],{hour:"numeric",minute:"2-digit"});
-return `<article class="o ${o.status}"><div class="top"><h4>Order ${esc(o.id)}</h4><span>${t}</span></div>
-<div class="who"><b>${esc(o.name)}</b><span>${esc(o.loc)}</span></div>
-${o.items.map(i=>`<div class="row"><span>${i.e} ${esc(i.n)} × ${i.q}</span><span>${peso(i.p*i.q)}</span></div>`).join("")}
-<div class="sum"><span>Total</span><span>${peso(o.total)}</span></div>
-<div class="seg" role="group" aria-label="Order status"><button class="pr ${o.status=="PREPARING"?"on":""}" data-id="${esc(o.id)}" data-s="PREPARING">PREPARING</button><button class="rd ${o.status=="READY"?"on":""}" data-id="${esc(o.id)}" data-s="READY">READY</button></div></article>`}
-async function paint(){const all=(await load()).filter(o=>o.status!="DELIVERED").sort((a,b)=>b.at-a.at),p=all.filter(o=>o.status!="READY"),r=all.filter(o=>o.status=="READY");
-$("#n0").textContent=all.length;$("#n1").textContent=p.length;$("#n2").textContent=r.length;
-$("#lp").innerHTML=p.length?p.map(card).join(""):'<div class="none">No orders being prepared. New customer orders appear here automatically.</div>';
-$("#lr").innerHTML=r.length?r.map(card).join(""):'<div class="none">Orders you mark READY move here and are forwarded to the rider site.</div>'}
-document.addEventListener("click",async e=>{const b=e.target.closest("button[data-id]");if(!b)return;
-const all=await load(),o=all.find(x=>x.id===b.dataset.id);if(!o||o.status===b.dataset.s)return;
-o.status=b.dataset.s;o.readyAt=o.status=="READY"?Date.now():null;
-try{if(DB)await fetch(DB+"/orders/"+o.id+".json",{method:"PATCH",body:JSON.stringify({status:o.status,readyAt:o.readyAt})});else{localStorage.setItem(KEY,JSON.stringify(all));new BroadcastChannel(KEY).postMessage("upd")}}catch(_){}paint()});
-addEventListener("storage",e=>{if(e.key===KEY)paint()});
-try{new BroadcastChannel(KEY).onmessage=paint}catch(_){}
+const esc=s=>s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const P={};let cur={},cart=[],pend=null,k=0;
+$("#shop").innerHTML=CATS.map((c,i)=>`<section id="c${i}"><div class="marker"><span class="idx">0${i+1}</span><span class="line"></span><span class="label">${c[1].length} items</span></div><h2>${c[0]}</h2><div class="grid">${c[1].map(p=>{P[p[0]]=p;return `<div class="p" data-n="${p[0]}"><div class="e">${p[1]}</div><b>${p[0]}</b><span>${peso(p[2])}</span><div class="st"><button data-d="-1" aria-label="Remove one ${p[0]}">−</button><i>0</i><button data-d="1" aria-label="Add one ${p[0]}">+</button></div></div>`}).join("")}</div></section>`).join("");
+$("#nav").innerHTML=CATS.map((c,i)=>`<a href="#c${i}">${c[0]}</a>`).join("");
+const total=items=>items.reduce((s,i)=>s+i.p*i.q,0);
+const curItems=()=>Object.entries(cur).map(([n,q])=>({n,e:P[n][1],p:P[n][2],q}));
+function paint(){const it=curItems();
+document.querySelectorAll(".p").forEach(el=>{const q=cur[el.dataset.n]||0;el.querySelector("i").textContent=q;el.classList.toggle("on",q>0)});
+$("#live").innerHTML=it.length?it.map(i=>`<div class="row"><span>${i.e} ${i.n} × ${i.q}</span><b>${peso(i.p*i.q)}</b></div>`).join(""):'<div class="empty">Nothing yet. Use + on any item to start your order.</div>';
+$("#tt").textContent=peso(total(it));$("#add").disabled=!it.length;
+$("#cc").textContent=cart.length;
+$("#orders").innerHTML=cart.length?cart.map(o=>`<div class="oc"><h4>Order ${o.id}</h4>${o.items.map(i=>`<div class="row"><span>${i.e} ${i.n} × ${i.q}</span><span>${peso(i.p*i.q)}</span></div>`).join("")}<div class="row"><b>Total</b><b>${peso(total(o.items))}</b></div><div class="acts"><button class="btn alt" data-rm="${o.id}">Remove</button><button class="btn" data-co="${o.id}">Checkout</button></div></div>`).join(""):'<div class="empty">Your cart is empty. Build an order and press Add to Cart.</div>'}
+$("#shop").onclick=e=>{const b=e.target.closest("button[data-d]");if(!b)return;const n=b.closest(".p").dataset.n,q=Math.max(0,(cur[n]||0)+ +b.dataset.d);q?cur[n]=q:delete cur[n];paint()};
+$("#clr").onclick=()=>{cur={};paint()};
+$("#add").onclick=()=>{cart.push({id:"#"+(++k),items:curItems()});cur={};paint();toast("Added to cart")};
+const drawer=o=>{$("#drawer").classList.toggle("open",o);$("#shade").classList.toggle("on",o)};
+$("#openCart").onclick=()=>{tab(0);drawer(1)};$("#closeCart").onclick=$("#shade").onclick=()=>drawer(0);
+$("#orders").onclick=e=>{const r=e.target.dataset.rm,c=e.target.dataset.co;
+if(r){cart=cart.filter(o=>o.id!==r);paint()}
+if(c){pend=cart.find(o=>o.id===c);$("#sum").textContent=`Order ${pend.id} · ${peso(total(pend.items))}`;$("#co").showModal()}};
+$("#cx").onclick=()=>$("#co").close();
+$("#f").onsubmit=async()=>{const o={id:"FL"+Date.now().toString().slice(-6),name:$("#nm").value.trim(),loc:$("#lc").value.trim(),items:pend.items,total:total(pend.items),status:"PREPARING",at:Date.now()};
+try{if(DB){const r=await fetch(DB+"/orders/"+o.id+".json",{method:"PUT",body:JSON.stringify(o)});if(!r.ok)throw 0}else{const all=JSON.parse(localStorage.getItem(KEY)||"[]");all.push(o);localStorage.setItem(KEY,JSON.stringify(all));try{new BroadcastChannel(KEY).postMessage("new")}catch(_){}}}catch(_){toast("Could not send the order. Check your connection and try again.");return}
+mine.push(o.id);saveMine();ord[o.id]=o;cart=cart.filter(x=>x!==pend);$("#f").reset();paint();paintMine();toast("Order placed. The seller has it now.")};
+let tm;function toast(t){const el=$("#toast");el.textContent=t;el.classList.add("on");clearTimeout(tm);tm=setTimeout(()=>el.classList.remove("on"),2800)}
 addEventListener("scroll",()=>document.querySelector("header").classList.toggle("scrolled",scrollY>40),{passive:true});
-setInterval(paint,3000);paint();
+
+const LOCS=["Ligao","Oas","Polangui","Guinobatan","Camarines Norte","Camarines Sur","Naga","Sorsogon","Pili"];
+$("#lc").innerHTML='<option value="">Choose a location</option>'+LOCS.map(l=>`<option>${l}</option>`).join("");
+let mine=[],ord={};try{mine=JSON.parse(localStorage.getItem("foodline_mine")||"[]")}catch(_){}
+const saveMine=()=>{try{localStorage.setItem("foodline_mine",JSON.stringify(mine))}catch(_){}};
+async function sync(){try{let a;if(DB){const r=await(await fetch(DB+"/orders.json")).json();a=r?Object.values(r):[]}else a=JSON.parse(localStorage.getItem(KEY)||"[]");ord={};a.forEach(o=>ord[o.id]=o)}catch(_){}paintMine()}
+function paintMine(){const L=mine.map(id=>ord[id]).filter(Boolean).reverse(),S=["PREPARING","READY","DELIVERED"];$("#mc").textContent=L.length;
+$("#mine").innerHTML=L.length?L.map(o=>{const n=S.indexOf(o.status);return `<div class="oc ${o.status}"><h4>Order ${o.id}<span class="bd">${o.status}</span>${o.status=="DELIVERED"?`<button class="x" data-del="${o.id}" aria-label="Remove order">×</button>`:""}</h4><div class="row"><span>${o.loc}</span><span>${peso(o.total)}</span></div><div class="sm">${o.items.map(i=>i.n+" × "+i.q).join(", ")}</div><div class="steps">${["Preparing","Ready","Delivered"].map((s,i)=>`<span class="${i<=n?"on":""}">${s}</span>`).join("")}</div></div>`}).join(""):'<div class="empty">No orders yet. Once you check out, you can follow your order here.</div>'}
+$("#mine").onclick=e=>{const d=e.target.dataset.del;if(d){mine=mine.filter(x=>x!==d);saveMine();paintMine()}};
+function tab(n){document.querySelectorAll(".tabs button").forEach((b,i)=>b.classList.toggle("on",i==n));$("#orders").hidden=n!=0;$("#mine").hidden=n!=1}
+document.querySelector(".tabs").onclick=e=>{const t=e.target.dataset.t;if(t!=null)tab(+t)};
+$("#openMine").onclick=()=>{tab(1);drawer(1)};
+sync();setInterval(sync,3000);
+paint();
 </script>
 </body>
 </html>
